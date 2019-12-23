@@ -30,6 +30,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="First_Django_APP\admin.py" />
+    <Compile Include="First_Django_APP\apps.py" />
+    <Compile Include="First_Django_APP\migrations\__init__.py" />
+    <Compile Include="First_Django_APP\models.py" />
+    <Compile Include="First_Django_APP\tests.py" />
+    <Compile Include="First_Django_APP\views.py" />
+    <Compile Include="First_Django_APP\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="DjangoWebProject1\__init__.py" />
     <Compile Include="DjangoWebProject1\settings.py" />
@@ -37,10 +44,15 @@
     <Compile Include="DjangoWebProject1\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="First_Django_APP\templates\First_Django_APP\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject1\" />
+    <Folder Include="First_Django_APP\" />
+    <Folder Include="First_Django_APP\migrations\" />
+    <Folder Include="First_Django_APP\templates\" />
+    <Folder Include="First_Django_APP\templates\First_Django_APP\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

@@ -3,6 +3,7 @@ Definition of urls for DjangoWebProject1.
 """
 
 from django.conf.urls import include, url
+import First_Django_APP.views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -18,4 +19,8 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', First_Django_APP.views.index, name='index'),
+    url(r'^home$',First_Django_APP.views.hh, name='home'),
 ]
+
+
