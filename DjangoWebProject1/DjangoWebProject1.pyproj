@@ -44,13 +44,17 @@
     <Compile Include="DjangoWebProject1\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="First_Django_APP\static\site.css" />
+    <Content Include="First_Django_APP\templates\First_Django_APP\about.html" />
     <Content Include="First_Django_APP\templates\First_Django_APP\index.html" />
+    <Content Include="First_Django_APP\templates\First_Django_APP\layout.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DjangoWebProject1\" />
     <Folder Include="First_Django_APP\" />
     <Folder Include="First_Django_APP\migrations\" />
+    <Folder Include="First_Django_APP\static\" />
     <Folder Include="First_Django_APP\templates\" />
     <Folder Include="First_Django_APP\templates\First_Django_APP\" />
   </ItemGroup>

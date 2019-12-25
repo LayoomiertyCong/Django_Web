@@ -21,6 +21,7 @@ urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', First_Django_APP.views.index, name='index'),
     url(r'^home$',First_Django_APP.views.hh, name='home'),
+    url(r'^about$',First_Django_APP.views.about, name='about'),
 ]
 
 
