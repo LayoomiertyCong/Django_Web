@@ -56,6 +56,13 @@
     <Folder Include="Django_Complete_Model\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\already_log.html" />
+    <Content Include="app\templates\app\al_log_attention_ad.html" />
+    <Content Include="app\templates\app\al_log_attention_normal.html" />
+    <Content Include="app\templates\app\query.html" />
+    <Content Include="app\templates\app\query_result.html" />
+    <Content Include="app\templates\app\update.html" />
+    <Content Include="app\templates\app\update_result.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

@@ -33,6 +33,11 @@ urlpatterns = [
         #name='login'),
     url(r'^login$', app.views.login, name='login'),
     url(r'^do_login$',app.views.do_login,name='do_login'),
+    url(r'^query/(.+)/$',app.views.query,name='query'),
+    url(r'^update/(.+)/$',app.views.update,name='update'),
+    url(r'^real_query_order/(.+)/$',app.views.real_query_order,name='real_query_order'),
+    url(r'^real_query_tracking/(.+)/$',app.views.real_query_tracking,name='real_query_tracking'),
+    url(r'^real_update/(.+)/$',app.views.real_update,name='real_update'),
     url(r'^logout$',
         django.contrib.auth.views.logout,
         {
