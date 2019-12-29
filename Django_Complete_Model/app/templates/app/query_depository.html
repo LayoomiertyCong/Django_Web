@@ -1,0 +1,29 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <h3>Query yourself yahhhh.</h3>
+            <form action="{% url 'depository_query_own' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="order_form" class="col-md-3 control-label">Click it poor guy</label>
+                    <div class="col-md-offset-3 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="See myself!" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm"></section>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <h3>Input what you want to query.</h3>
+            <form action="{% url 'customer_query_order' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="order_form" class="col-md-3 control-label">SName To Supplier</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Please input your supplier number" name="order_num">
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label for="id_password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" placeholder="Please input your password" name="password">
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Query Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form action="{% url 'customer_query_waybill' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="tracking_number" class="col-md-3 control-label">Waybill To Place</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Please input your waybill number" name="tracking_num">
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label for="id_password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" placeholder="Please input your password" name="password">
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Query Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form action="{% url 'customer_query_dm' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="tracking_number" class="col-md-3 control-label">Waybill To Deliverman</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="Please input your waybill number" name="Wno">
+                    </div>
+                </div>
+                <!--<div class="form-group">
+                    <label for="id_password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" placeholder="Please input your password" name="password">
+                    </div>
+                </div>-->
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Query Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form action="{% url 'customer_query_all_order' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="tracking_number" class="col-md-3 control-label">All Order</label>
+                    <div class="col-md-offset-3 col-md-10">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Query Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm"></section>
+    </div>
+</div>
+
+{% endblock %}

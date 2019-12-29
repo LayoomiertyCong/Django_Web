@@ -68,34 +68,58 @@ def do_login(request):
         username=request.POST.get("username",None)
         password=request.POST.get("password",None)
     conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='syddbw5200608',
-                           db='test', charset='utf8', cursorclass=pymysql.cursors.DictCursor)
+                           db='test2', charset='utf8', cursorclass=pymysql.cursors.DictCursor)
     cursor=conn.cursor(pymysql.cursors.DictCursor)
-    cursor.execute('select * from login where username=%s and password=%s',(username,password))
+    cursor.execute('select * from user where username=%s and password=%s',(username,password))
     if cursor.rowcount>0:
-        cursor.execute('select * from login where username=%s',username)
-        login=cursor.fetchone()
-        ad=login["identy"]
-        if ad=='admin':
+        cursor.execute('select * from user where username=%s',username)
+        user=cursor.fetchone()
+        utype=user["Utype"]
+        if utype=='customer':
             assert isinstance(request, HttpRequest)
             return render(
                 request,
-                'app/al_log_attention_ad.html',
+                'app/al_log_attention_customer.html',
                 {
                     'username':username,
-                    'title':'Welcome to admin page.',
-                    'message':'You can do all you want.',
+                    'title':'Welcome to customer page.',
+                    'message':'You can only do some query.',
                     'year':datetime.now().year,
                 }
             )
-        if ad=='visitor':
+        if utype=='supplier':
             assert isinstance(request, HttpRequest)
             return render(
                 request,
-                'app/al_log_attention_normal.html',
+                'app/al_log_attention_supplier.html',
                 {
                     'username':username,
-                    'title':'Welcome to lcy\'s page.',
-                    'message':'CY Li is chou di di.',
+                    'title':'Welcome to supplier page.',
+                    'message':'You can only do some query.',
+                    'year':datetime.now().year,
+                }
+            )
+        if utype=='depository':
+            assert isinstance(request, HttpRequest)
+            return render(
+                request,
+                'app/al_log_attention_depository.html',
+                {
+                    'username':username,
+                    'title':'Welcome to depository page.',
+                    'message':'You can only do some query and one update.',
+                    'year':datetime.now().year,
+                }
+            )
+        if utype=='logisticcenter':
+            assert isinstance(request, HttpRequest)
+            return render(
+                request,
+                'app/al_log_attention_logisticcenter.html',
+                {
+                    'username':username,
+                    'title':'Welcome to logisticcenter page.',
+                    'message':'You are powerful! You can query and update all things.',
                     'year':datetime.now().year,
                 }
             )
@@ -135,6 +159,7 @@ def update(request,param2):
             'year':datetime.now().year,
         }
     )
+
 
 def real_query_order(request,param3):
     order_number=""

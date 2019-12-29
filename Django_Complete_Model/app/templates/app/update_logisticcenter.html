@@ -1,0 +1,346 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+<div class="row">
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new supplier item you update.</h3>
+            <form action="{% url 'lc_update_supplier' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Supplier Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier number" name="Sno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Name</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier name" name="Sname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Address</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier address" name="Saddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Telephone Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier telephone number" name="Stel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Postal Code</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier postal code" name="Spostalcode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Contact</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new supplier contact" name="Scontact">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new customer item you update.</h3>
+            <form action="{% url 'lc_update_customer' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Customer Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer number" name="Cno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Name</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer name" name="Cname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Address</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer address" name="Caddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Telephone Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer telephone number" name="Ctel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Postal Code</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer postal code" name="Cpostalcode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Contact</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new customer contact" name="Ccontact">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new depository item you update.</h3>
+            <form action="{% url 'lc_update_depository' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Depository Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new depository number" name="Dno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Depository Address</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new depository address" name="Daddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Depository Capacity</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new depository capacity" name="Dcapacity">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Depository Telephone Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new depository telephone number" name="Dtel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Logisticcenter Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the logisticcenter number" name="Lno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Depository Type</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the depository type" name="Dtype">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new waybill item you update.</h3>
+            <form action="{% url 'lc_update_waybill' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Waybill Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new waybill number" name="Wno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Order Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the corresponding order number" name="Ono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Logisticcenter Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the logisticcenter number" name="Lno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the customer number" name="Cno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new order item you update.</h3>
+            <form action="{% url 'lc_update_order' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Order Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new order number" name="Ono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Customer Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the customer number" name="Cno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Supplier Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the supplier number" name="Sno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Order Price</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the order price" name="Oprice">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Order Amount</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the order amount" name="Oamount">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Order Date</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the order date" name="Odate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+                <!--{% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}-->
+            </form>
+        </section>
+    </div>
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new order_good item you update.</h3>
+            <form action="{% url 'lc_update_order_good' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Order Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new order number" name="Ono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Good Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the good number" name="Gno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-16">
+        <section id="loginForm">
+            <h3>Input new route item you update.</h3>
+            <form action="{% url 'lc_update_route' username %}" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Order Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new order number" name="Ono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Departure Depository Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the departure dno" name="Dno_departure">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Arrive Depository Number</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the arrive dno" name="Dno_arrive">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Is Destination</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input if is destination" name="isdesitination">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Place" class="col-md-4 control-label">Route Information</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the route information" name="Rinfo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-12">
+                        <input type="hidden" name="next" value="/" />
+                        <input type="submit" value="Update Go!" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm"></section>
+    </div>
+</div>
+
+{% endblock %}

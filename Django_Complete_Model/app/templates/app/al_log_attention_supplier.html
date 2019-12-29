@@ -1,0 +1,16 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+
+<!--<p>Use this area to provide additional information.</p>-->
+<div class="row">
+    <div class="col-md-12">
+        <h2>Query</h2>
+        <h4>You can query customer's information and where the good is.</h4>
+        <p><a class="btn btn-default" href="{% url 'customer_query' username %}">Let's query! &raquo;</a></p>
+    </div>
+</div>
+{% endblock %}

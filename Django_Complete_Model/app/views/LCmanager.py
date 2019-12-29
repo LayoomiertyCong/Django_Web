@@ -331,6 +331,3 @@ def lc_query_depository_leftcapacity(request):
                 'year':datetime.now().year
             }
         )
-
-
-

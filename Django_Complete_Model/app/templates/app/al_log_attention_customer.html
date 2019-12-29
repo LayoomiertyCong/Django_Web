@@ -1,0 +1,25 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+
+<!--<p>Use this area to provide additional information.</p>-->
+<div class="row">
+    <div class="col-md-6">
+        <section id="loginForm">
+            <h3>Query</h3>
+            <h4>You can query supplier's information and where the good is.</h4>
+            <p><a class="btn btn-default" href="{% url 'customer_query' username %}">Let's query! &raquo;</a></p>
+        </section>
+    </div>
+    <div class="col-md-6">
+        <section id="loginForm">
+            <h3>Change Password</h3>
+            <h4>You can change your password.</h4>
+            <p><a class="btn btn-default" href="{% url 'change_pw' username %}">Let's change! &raquo;</a></p>
+        </section>
+    </div>
+</div>
+{% endblock %}

@@ -31,10 +31,31 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\connectsql.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\customer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\depository.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\forms.py" />
+    <Compile Include="app\logisticcenter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\models.py" />
+    <Compile Include="app\supplier.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
+    <Compile Include="app\views\connectsql.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\views\LCmanager.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="manage.py" />
@@ -46,6 +67,7 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
+    <Folder Include="app\views\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
@@ -57,12 +79,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\app\already_log.html" />
-    <Content Include="app\templates\app\al_log_attention_ad.html" />
-    <Content Include="app\templates\app\al_log_attention_normal.html" />
-    <Content Include="app\templates\app\query.html" />
-    <Content Include="app\templates\app\query_result.html" />
+    <Content Include="app\templates\app\al_log_attention_depository.html" />
+    <Content Include="app\templates\app\al_log_attention_logisticcenter.html" />
+    <Content Include="app\templates\app\al_log_attention_logistics.html" />
+    <Content Include="app\templates\app\al_log_attention_customer.html" />
+    <Content Include="app\templates\app\al_log_attention_supplier.html" />
+    <Content Include="app\templates\app\change_depository.html" />
+    <Content Include="app\templates\app\change_depository_result.html" />
+    <Content Include="app\templates\app\change_logisticcenter.html" />
+    <Content Include="app\templates\app\change_logisticcenter_result.html" />
+    <Content Include="app\templates\app\change_password.html" />
+    <Content Include="app\templates\app\change_password_result.html" />
+    <Content Include="app\templates\app\delete_logisticcenter.html" />
+    <Content Include="app\templates\app\delete_logisticcenter_result.html" />
+    <Content Include="app\templates\app\query_customer.html" />
+    <Content Include="app\templates\app\query_customer_result.html" />
+    <Content Include="app\templates\app\query_depository.html" />
+    <Content Include="app\templates\app\query_depository_result.html" />
+    <Content Include="app\templates\app\query_logisticcenter.html" />
+    <Content Include="app\templates\app\query_logisticcenter_result.html" />
+    <Content Include="app\templates\app\query_supplier.html" />
+    <Content Include="app\templates\app\query_supplier_result.html" />
     <Content Include="app\templates\app\update.html" />
+    <Content Include="app\templates\app\update_depository.html" />
+    <Content Include="app\templates\app\update_depository_result.html" />
+    <Content Include="app\templates\app\update_logisticcenter.html" />
+    <Content Include="app\templates\app\update_logisticcenter_result.html" />
     <Content Include="app\templates\app\update_result.html" />
+    <Content Include="app\views\desc.md" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />

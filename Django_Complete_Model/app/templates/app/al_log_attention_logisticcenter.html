@@ -1,0 +1,31 @@
+﻿{% extends "app/already_log.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<h2>{{ message }}</h2>
+
+<!--<p>Use this area to provide additional information.</p>-->
+<div class="row">
+    <div class="col-md-6">
+        <h2>Query</h2>
+        <h4>You can query all you want.</h4>
+        <p><a class="btn btn-default" href="{% url 'logisticcenter_query' username %}">Let's query! &raquo;</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Update</h2>
+        <h4>You can update all except depository information or change order.</h4>
+        <p><a class="btn btn-default" href="{% url 'logisticcenter_update' username %}">Go update! &raquo;</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Change</h2>
+        <h4>You can change the management information.</h4>
+        <p><a class="btn btn-default" href="{% url 'logisticcenter_change' username %}">Go Change! &raquo;</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Change</h2>
+        <h4>You can delete entity.</h4>
+        <p><a class="btn btn-default" href="{% url 'logisticcenter_delete' username %}">Go Delete! &raquo;</a></p>
+    </div>
+</div>
+{% endblock %}
