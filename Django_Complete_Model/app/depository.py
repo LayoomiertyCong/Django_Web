@@ -6,6 +6,7 @@ from app.forms import BootstrapAuthenticationForm
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 import pymysql
+import app.connectsql as ac
 
 def depository_query(request,param1):
     assert isinstance(request, HttpRequest)
