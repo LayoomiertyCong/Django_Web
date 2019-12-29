@@ -21,7 +21,7 @@ def logisticcenter_query(request,param1):
         }
     )
 
-def lc_query_depository_information(request,param1,param2):
+def lc_query_depository_information(request,param1):
     Dno=""
     '''
         input:
