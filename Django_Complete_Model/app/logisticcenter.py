@@ -72,92 +72,340 @@ def lc_query_depository_information(request,param1):
     
 
 def lc_query_supplier_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            生产商编号 Sno
+        output:
+            生产商名称 Sname
+            生产商地址 Saddress
+            生产商电话 Stel
+            生产商邮编 Spostalcode
+            生产商联系人 Scontact
+    '''
+
+    Sno = ""
+    if request.method == 'POST':
+        Sno = request.POST.get("Sno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from supplier where Sno=%s',Sno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        Sname = information['Sname']
+        Saddress = information['Saddress']
+        Stel = information['Stel']
+        Spostalcode = information['Spostalcode']
+        Scontact = information['Scontact']
+
+        result = "Sname:"+Sname+'\n' + "Saddress:"+Saddress+'\n' + "Stel:"+Stel+'\n' + "Spostalcode:"+Spostalcode+'\n' + "Scontact:"+Scontact+'\n'
+
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result",
+                'message2':result,
                 'year':datetime.now().year,
             }
         )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
+                'year':datetime.now().year,
+            }
+        )
+    
 
 def lc_query_customer_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            客户编号 Cno
+        output:
+            客户名称 Cname
+            客户地址 Caddress
+            客户电话 Ctel
+            客户邮编 Cpostalcode
+            客户联系人 Ccontact
+    '''
+    Sno = ""
+    if request.method == 'POST':
+        Sno = request.POST.get("Cno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from customer where Cno=%s',Cno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        Cname = information['Cname']
+        Caddress = information['Caddress']
+        Ctel = information['Ctel']
+        Cpostalcode = information['Cpostalcode']
+        Ccontact = information['Ccontact']
+
+        result="Cname:"+Cname+'\n'+"Caddress:"+Caddress+'\n'+"Ctel:"+Ctel+'\n'+"Cpostalcode:"+Cpostalcode+'\n'+"Ccontact:"+Ccontact+'\n'
+
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
 
 def lc_query_waybill_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            运单号 Wno
+        output:
+            订单号 Ono
+            负责物流中心编号 Lno
+            客户编号 Cno
+    '''
+    Wno = ""
+    if request.method == 'POST':
+        Wno = request.POST.get("Wno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from waybill where Wno=%s',Wno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        Ono = information['Ono']
+        Lno = information['Lno']
+        Cno = information['Cno']
+
+        result="Ono:"+Ono+'\n'+"Lno:"+Lno+'\n'+"Cno:"+Cno+'\n'
+
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
 
 def lc_query_order_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            订单号 Ono
+        output:
+            客户编号 Cno
+            生产商编号 Sno
+            总价 Oprice
+            总量 Oamount
+            日期 Odate
+    '''
+    Dno = ""
+    if request.method == 'POST':
+        Ono = request.POST.get("Ono",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from order where Ono=%s',Ono)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        Cno = information['Cno']
+        Sno = information['Sno']
+        Oprice = information['Oprice']
+        Oamount = information['Oamount']
+        Odate = information['Odate']
+
+        result="Cno:"+Cno+'\n'+"Sno:"+Sno+'\n'+"Oprice:"+str(Oprice)+'\n'+"Oamount:"+str(Oamount)+'\n'+"Odate:"+str(Odate)+'\n'
+
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
 
 def lc_query_transfer_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            运单号 Wno
+        output:
+            到达仓库编号 Dno
+            进库时间 Ttime
+    '''
+    Wno = ""
+    if request.method == 'POST':
+        Wno = request.POST.get("Wno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from transer where Ono=%s order by Ttime',Ono)
+
+    if cursor.rowcount>0:
+        tuplelist = cursor.fetchall()
+        assert isinstance(request, HttpRequest)
+
+        Dnolist = []
+        Ttimelist = []
+
+        result = ""
+
+        for information in tuplelist:
+            result += "Dno:%s   Ttime:%s\n"%(information['Dno'],str(information['Ttime']))
+
+        assert isinstance(request, HttpRequest)
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result:",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
 
 def lc_query_depository_leftcapacity(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    def lc_query_depository_leftcapacity(request):
+    '''
+        input:
+            仓库编号 Dno
+        output:
+            剩余容量 LeftCapacity
+    '''
+    if request.method == 'POST':
+        Dno = request.POST.get("Dno",None)
+    cursor = connect_into_database()
+    cursor.execute('select LeftCapacity from management where Dno=%s',Dno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        LeftCapacity = information['LeftCapacity']
+        result="LeftCapacity:"+LeftCapacity+'\n'
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
 
 def lc_query_deliverman_information(request,param):
-    assert isinstance(request, HttpRequest)
-    return render(
+    '''
+        input:
+            配货员编号 DMno
+        output:
+            姓名 DMname
+            性别 Dmgender
+            联系方式 Dmtel
+    '''
+    DMno = ""
+    if request.method == 'POST':
+        DMno = request.POST.get("DMno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from deliverman where DMno=%s',DMno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        DMname = information['DMname']
+        DMgender = information['DMgender']
+        DMtel = information['DMtel']
+
+        result="DMname:"+DMname+"\n"+"DMgender"+DMgender+"\n"+"DMtel:"+DMtel
+        assert isinstance(request, HttpRequest)
+        return render(
             request,
             'app/query_logisticcenter_result.html',
             {
                 'username':param,
-                'message1':"LCY_Logistic",
-                'message2':"LCY_Logistic",
+                'message1':"Query Result:",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
                 'year':datetime.now().year,
             }
         )
@@ -177,6 +425,55 @@ def logisticcenter_update(request,param4):
             'year':datetime.now().year,
         }
     )
+
+def lc_query_distribution_information(request,param1):
+    '''
+        input:
+            运单号 Wno
+        output:
+            配货员编号 DMno
+            收货人姓名 Cname
+            收货人联系方式 Ctel
+            运货地址 Caddress
+    '''
+    Wno = ""
+    if request.method == 'POST':
+        Wno = request.POST.get("Wno",None)
+    cursor = connect_into_database()
+    cursor.execute('select * from distribution where Wno=%s',Wno)
+
+    if cursor.rowcount>0:
+        information=cursor.fetchone()
+        assert isinstance(request, HttpRequest)
+
+        DMno = information['DMno']
+        Cname = information['Cname']
+        Ctel = information['Ctel']
+        Caddress = information['Caddress']
+
+        result="DMno:"+DMno+"\n"+"Cname"+Cname+"\n"+"Ctel:"+Ctel+"\n"+"Caddress:"+Caddress
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/query_logisticcenter_result.html',
+            {
+                'username':param,
+                'message1':"Query Result:",
+                'message2':result,
+                'year':datetime.now().year,
+            }
+        )
+    elif cursor.rowcount==0:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/about.html',
+            {
+                'title':'Are you szs?',
+                'message':'There is no such depository.',
+                'year':datetime.now().year,
+            }
+        )
 
 
 def lc_update_supplier(request,param5):
