@@ -86,7 +86,7 @@ def lc_query_supplier_information(request,param):
     Sno = ""
     if request.method == 'POST':
         Sno = request.POST.get("Sno",None)
-    cursor = connect_into_database()
+    cursor = ac.connect_into_database()
     cursor.execute('select * from supplier where Sno=%s',Sno)
 
     if cursor.rowcount>0:
@@ -135,10 +135,10 @@ def lc_query_customer_information(request,param):
             客户邮编 Cpostalcode
             客户联系人 Ccontact
     '''
-    Sno = ""
+    Cno = ""
     if request.method == 'POST':
-        Sno = request.POST.get("Cno",None)
-    cursor = connect_into_database()
+        Cno = request.POST.get("Cno",None)
+    cursor = ac.connect_into_database()
     cursor.execute('select * from customer where Cno=%s',Cno)
 
     if cursor.rowcount>0:
@@ -187,7 +187,7 @@ def lc_query_waybill_information(request,param):
     Wno = ""
     if request.method == 'POST':
         Wno = request.POST.get("Wno",None)
-    cursor = connect_into_database()
+    cursor = ac.connect_into_database()
     cursor.execute('select * from waybill where Wno=%s',Wno)
 
     if cursor.rowcount>0:
@@ -233,11 +233,11 @@ def lc_query_order_information(request,param):
             总量 Oamount
             日期 Odate
     '''
-    Dno = ""
+    Ono = ""
     if request.method == 'POST':
         Ono = request.POST.get("Ono",None)
-    cursor = connect_into_database()
-    cursor.execute('select * from order where Ono=%s',Ono)
+    cursor = ac.connect_into_database()
+    cursor.execute('select * from `order` where Ono=%s',Ono)
 
     if cursor.rowcount>0:
         information=cursor.fetchone()
@@ -246,7 +246,7 @@ def lc_query_order_information(request,param):
         Cno = information['Cno']
         Sno = information['Sno']
         Oprice = information['Oprice']
-        Oamount = information['Oamount']
+        Oamount=information['Oamount']
         Odate = information['Odate']
 
         result="Cno:"+Cno+'\n'+"Sno:"+Sno+'\n'+"Oprice:"+str(Oprice)+'\n'+"Oamount:"+str(Oamount)+'\n'+"Odate:"+str(Odate)+'\n'
@@ -284,8 +284,8 @@ def lc_query_transfer_information(request,param):
     Wno = ""
     if request.method == 'POST':
         Wno = request.POST.get("Wno",None)
-    cursor = connect_into_database()
-    cursor.execute('select * from transer where Ono=%s order by Ttime',Ono)
+    cursor = ac.connect_into_database()
+    cursor.execute('select * from transfer where Wno=%s order by Ttime',Wno)
 
     if cursor.rowcount>0:
         tuplelist = cursor.fetchall()
@@ -323,7 +323,7 @@ def lc_query_transfer_information(request,param):
         )
 
 def lc_query_depository_leftcapacity(request,param):
-    def lc_query_depository_leftcapacity(request):
+    
     '''
         input:
             仓库编号 Dno
@@ -332,7 +332,7 @@ def lc_query_depository_leftcapacity(request,param):
     '''
     if request.method == 'POST':
         Dno = request.POST.get("Dno",None)
-    cursor = connect_into_database()
+    cursor = ac.connect_into_database()
     cursor.execute('select LeftCapacity from management where Dno=%s',Dno)
 
     if cursor.rowcount>0:
@@ -340,7 +340,7 @@ def lc_query_depository_leftcapacity(request,param):
         assert isinstance(request, HttpRequest)
 
         LeftCapacity = information['LeftCapacity']
-        result="LeftCapacity:"+LeftCapacity+'\n'
+        result="LeftCapacity:"+str(LeftCapacity)+'\n'
         return render(
             request,
             'app/query_logisticcenter_result.html',
@@ -375,7 +375,7 @@ def lc_query_deliverman_information(request,param):
     DMno = ""
     if request.method == 'POST':
         DMno = request.POST.get("DMno",None)
-    cursor = connect_into_database()
+    cursor = ac.connect_into_database()
     cursor.execute('select * from deliverman where DMno=%s',DMno)
 
     if cursor.rowcount>0:
@@ -383,10 +383,10 @@ def lc_query_deliverman_information(request,param):
         assert isinstance(request, HttpRequest)
 
         DMname = information['DMname']
-        DMgender = information['DMgender']
+        DMsex = information['DMsex']
         DMtel = information['DMtel']
 
-        result="DMname:"+DMname+"\n"+"DMgender"+DMgender+"\n"+"DMtel:"+DMtel
+        result="DMname:"+DMname+"\n"+"DMgender:"+DMsex+"\n"+"DMtel:"+DMtel
         assert isinstance(request, HttpRequest)
         return render(
             request,
@@ -439,7 +439,7 @@ def lc_query_distribution_information(request,param1):
     Wno = ""
     if request.method == 'POST':
         Wno = request.POST.get("Wno",None)
-    cursor = connect_into_database()
+    cursor = ac.connect_into_database()
     cursor.execute('select * from distribution where Wno=%s',Wno)
 
     if cursor.rowcount>0:
