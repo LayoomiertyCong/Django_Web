@@ -226,7 +226,6 @@ def lc_query_order_information(request):
         Cno = information['Cno']
         Sno = information['Sno']
         Oprice = information['Oprice']
-        Oamount = information['Oamount']
         Odate = information['Odate']
 
         return render(
