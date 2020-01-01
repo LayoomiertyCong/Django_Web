@@ -476,86 +476,260 @@ def lc_query_distribution_information(request,param1):
         )
 
 
+
 def lc_update_supplier(request,param5):
+    username=""
+    password=""
+    Sno=""
+    Sname=""
+    Saddress=""
+    Stel=""
+    Spostalcode=""
+    Scontact=""
+
+    if request.method == 'POST':
+        username = request.POST.get("username", None)
+        password = request.POST.get("password", None)
+        Sno = request.POST.get("Sno", None)
+        Sname = request.POST.get("Sname", None)
+        Saddress = request.POST.get("Saddress", None)
+        Stel = request.POST.get("Stel", None)
+        Scontact = request.POST.get("Scontact", None)
+        Spostalcode = request.POST.get("Spostalcode", None)
+
+        
+    cursor1,conn1 = ac.connect_into_database_up()
+    cursor2,conn2 = ac.connect_into_database_up()
+
+    cursor1.execute('insert into user values(%s,%s,%s)',(username,password,"supplier"))
+    conn1.commit()
+    conn1.close()
+    cursor1.close()
+    cursor2.execute('insert into supplier values(%s,%s,%s,%s,%s,%s)',(Sno,Sname,Saddress,Stel,Spostalcode,Scontact))
+    conn2.commit()
+    conn2.close()
+    cursor2.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics S",
+                'message2':"Update a new supplier successfully",
                 'year':datetime.now().year,
             }
         )
 
 
 def lc_update_customer(request,param5):
+    '''
+    输入：用户名,用户密码,身份
+
+    '''
+    username=""
+    password=""
+    Cno=""
+    Cname=""
+    Caddress=""
+    Ccontact=""
+    Cpostalcode=""
+    Ctel=""
+
+    if request.method == 'POST':
+        username = request.POST.get("username", None)
+        password = request.POST.get("password", None)
+        Cno = request.POST.get("Cno", None)
+        Cname = request.POST.get("Cname", None)
+        Caddress = request.POST.get("Caddress", None)
+        Ccontact = request.POST.get("Ccontact", None)
+        Cpostalcode = request.POST.get("Cpostalcode", None)
+        Ctel = request.POST.get("Ctel", None)
+        
+    cursor1,conn1 = ac.connect_into_database_up()
+    cursor2,conn2 = ac.connect_into_database_up()
+
+    cursor1.execute('insert into user values(%s,%s,%s)',(username,password,"customer"))
+    conn1.commit()
+    conn1.close()
+    cursor1.close()
+    cursor2.execute('insert into customer values(%s,%s,%s,%s,%s,%s)',(Cno,Cname,Caddress,Ccontact,Cpostalcode,Ctel))
+    conn2.commit()
+    conn2.close()
+    cursor2.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics C",
+                'message2':"Update a new customer successfully",
                 'year':datetime.now().year,
             }
         )
 
 def lc_update_depository(request,param5):
+    username=""
+    password=""
+    Dno=""
+    Daddress=""
+    Dcapacity=""
+    Dtel=""
+    Lno=""
+    Dtype=""
+
+    if request.method == 'POST':
+        username = request.POST.get("username", None)
+        password = request.POST.get("password", None)
+        Dno = request.POST.get("Dno", None)
+        Daddress = request.POST.get("Daddress", None)
+        Dcapacity = request.POST.get("Dcapacity", None)
+        Dtel = request.POST.get("Dtel", None)
+        Lno = request.POST.get("Lno", None)
+        Dtype = request.POST.get("Dtype", None)
+        
+    cursor1,conn1 = ac.connect_into_database_up()
+    cursor2,conn2 = ac.connect_into_database_up()
+
+    cursor1.execute('insert into user values(%s,%s,%s)',(username,password,"depository"))
+    conn1.commit()
+    conn1.close()
+    cursor1.close()
+    cursor2.execute('insert into depository values(%s,%s,%s,%s,%s,%s)',(Dno,Daddress,Dcapacity,Dtel,Lno,Dtype))
+    conn2.commit()
+    conn2.close()
+    cursor2.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics C",
+                'message2':"Update a new depository successfully",
                 'year':datetime.now().year,
             }
         )
 def lc_update_waybill(request,param5):
+    '''
+    输入：运单编号，订单编号，物流中心编号，客户编号
+
+    '''
+    Wno=""
+    Ono=""
+    Lno=""
+    Cno=""
+    if request.method == 'POST':
+        Wno = request.POST.get("Wno", None)
+        Ono = request.POST.get("Ono", None)
+        Lno = request.POST.get("Lno", None)
+        Cno = request.POST.get("Cno", None)
+        
+    cursor,conn = ac.connect_into_database_up()
+    
+    cursor.execute('insert into waybill values(%s,%s,%s,%s)',(Wno,Ono,Lno,Cno))
+    conn.commit()
+    conn.close()
+    cursor.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics W",
+                'message2':"Update waybill successfully",
                 'year':datetime.now().year,
             }
         )
 
 def lc_update_order(request,param5):
+    '''
+    输入：订单编号，客户编号，生产商编号，总价，数量，下单日期
+
+    '''
+    Ono=""
+    Cno=""
+    Sno=""
+    Oprice=""
+    Oamount=""
+    Odate=""
+    if request.method == 'POST':
+        Ono = request.POST.get("Ono", None)
+        Cno = request.POST.get("Cno", None)
+        Sno = request.POST.get("Sno", None)
+        Oprice = request.POST.get("Oprice", None)
+        Oamount = request.POST.get("Oamount", None)
+        Odate = request.POST.get("Odate", None)
+        #Odate = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  
+        
+    cursor,conn = ac.connect_into_database_up()
+    Oprice=float(Oprice)
+    Oamount=int(Oamount)
+    cursor.execute('insert into `order` values(%s,%s,%s,%s,%s,%s)',(Ono,Cno,Sno,Oprice,Oamount,Odate))
+    conn.commit()
+    conn.close()
+    cursor.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics O",
+                'message2':"Update Successfully",
                 'year':datetime.now().year,
             }
         )
 
 def lc_update_order_good(request,param5):
+    '''
+    输入：订单编号，货物编号
+
+    '''
+    Ono=""
+    Gno=""
+    if request.method == 'POST':
+        Ono = request.POST.get("Ono", None)
+        Gno = request.POST.get("Gno", None)
+        
+    cursor,conn = ac.connect_into_database_up()
+    
+    cursor.execute('insert into order_good values(%s,%s)',(Ono,Gno))
+    conn.commit()
+    conn.close()
+    cursor.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics og",
+                'message2':"Update order_good successfully",
                 'year':datetime.now().year,
             }
         )
 
 def lc_update_route(request,param5):
+    Dano=""
+    Dbno=""
+    Dstartno=""
+    Ddestinyno=""
+    if request.method == 'POST':
+        Dano = request.POST.get("Dano", None)
+        Dbno = request.POST.get("Dbno", None)
+        Dstartno = request.POST.get("Dstartno", None)
+        Ddestinyno = request.POST.get("Ddestinyno", None)
+
+    cursor,conn = ac.connect_into_database_up()
+    
+    cursor.execute('insert into Route values(%s,%s,%s,%s)',(Dano,Dbno,Dstartno,Ddestinyno))
+    conn.commit()
+    conn.close()
+    cursor.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/update_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Updated Logistics r",
+                'message2':"Update Route successfully",
                 'year':datetime.now().year,
             }
         )
@@ -597,14 +771,30 @@ def logisticcenter_delete(request,param4):
         }
     )
 
-def lc_delete_customer(request,param5):
+def lc_delete_user(request,param5):
+    '''
+    输入：用户名,用户密码
+
+    '''
+    username=""
+    password=""
+    if request.method == 'POST':
+        username = request.POST.get("username", None)
+        password = request.POST.get("password", None)
+        
+    cursor,conn= ac.connect_into_database_up()
+    
+    cursor.execute('delete from user where username=%s and password=%s',(username,password))
+    conn.commit()
+    conn.close()
+    cursor.close()
     assert isinstance(request, HttpRequest)
     return render(
             request,
             'app/delete_logisticcenter_result.html',
             {
                 'username':param5,
-                'message2':"LCY Delete Logistics c",
+                'message2':"Delete Successfully",
                 'year':datetime.now().year,
             }
         )

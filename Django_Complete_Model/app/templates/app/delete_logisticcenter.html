@@ -8,13 +8,19 @@
     <div class="col-md-16">
         <section id="loginForm">
             <h3>Input the customer you want to delete.</h3>
-            <form action="{% url 'lc_delete_customer' username %}" method="post" class="form-horizontal">
+            <form action="{% url 'lc_delete_user' username %}" method="post" class="form-horizontal">
                 {% csrf_token %}
                 <hr />
                 <div class="form-group">
-                    <label for="Tracking_Num" class="col-md-4 control-label">Customer Number</label>
+                    <label for="Tracking_Num" class="col-md-4 control-label">Username</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the customer number" name="Cno">
+                        <input type="text" class="form-control" placeholder="Please input the username" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Password</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
@@ -26,48 +32,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-16">
-        <section id="loginForm">
-            <h3>Input the supplier you want to delete.</h3>
-            <form action="{% url 'lc_delete_supplier' username %}" method="post" class="form-horizontal">
-                {% csrf_token %}
-                <hr />
-                <div class="form-group">
-                    <label for="Tracking_Num" class="col-md-4 control-label">Supplier Number</label>
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the supplier number" name="Sno">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-12">
-                        <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Delete Go!" class="btn btn-default" />
-                    </div>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-16">
-        <section id="loginForm">
-            <h3>Input the depository you want to delete.</h3>
-            <form action="{% url 'lc_delete_depository' username %}" method="post" class="form-horizontal">
-                {% csrf_token %}
-                <hr />
-                <div class="form-group">
-                    <label for="Tracking_Num" class="col-md-4 control-label">Depository Number</label>
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the depository number" name="Dno">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-4 col-md-12">
-                        <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Delete Go!" class="btn btn-default" />
-                    </div>
-                </div>
-            </form>
-        </section>
-    </div>
+    
     
     <div class="col-md-4">
         <section id="socialLoginForm"></section>

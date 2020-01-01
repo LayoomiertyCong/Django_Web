@@ -12,6 +12,18 @@
                 {% csrf_token %}
                 <hr />
                 <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Username</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new username" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Password</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="Tracking_Num" class="col-md-4 control-label">Supplier Number</label>
                     <div class="col-md-12">
                         <input type="text" class="form-control" placeholder="Please input the new supplier number" name="Sno">
@@ -67,6 +79,18 @@
                 {% csrf_token %}
                 <hr />
                 <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Username</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new username" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Password</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="Tracking_Num" class="col-md-4 control-label">Customer Number</label>
                     <div class="col-md-12">
                         <input type="text" class="form-control" placeholder="Please input the new customer number" name="Cno">
@@ -121,6 +145,18 @@
             <form action="{% url 'lc_update_depository' username %}" method="post" class="form-horizontal">
                 {% csrf_token %}
                 <hr />
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Username</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new username" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tracking_Num" class="col-md-4 control-label">Password</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Please input the new password" name="password">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="Tracking_Num" class="col-md-4 control-label">Depository Number</label>
                     <div class="col-md-12">
@@ -239,13 +275,13 @@
                 <div class="form-group">
                     <label for="Place" class="col-md-4 control-label">Order Price</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the order price" name="Oprice">
+                        <input type="number" step="0.01" class="form-control" placeholder="Please input the order price" name="Oprice">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Place" class="col-md-4 control-label">Order Amount</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the order amount" name="Oamount">
+                        <input type="number" class="form-control" placeholder="Please input the order amount" name="Oamount">
                     </div>
                 </div>
                 <div class="form-group">
@@ -300,33 +336,27 @@
                 {% csrf_token %}
                 <hr />
                 <div class="form-group">
-                    <label for="Tracking_Num" class="col-md-4 control-label">Order Number</label>
+                    <label for="Tracking_Num" class="col-md-4 control-label">Depository A Number</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the new order number" name="Ono">
+                        <input type="text" class="form-control" placeholder="Please input the depository a number" name="Dano">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Place" class="col-md-4 control-label">Departure Depository Number</label>
+                    <label for="Place" class="col-md-4 control-label">Depository B Number</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the departure dno" name="Dno_departure">
+                        <input type="text" class="form-control" placeholder="Please input the depository b number" name="Dbno">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Place" class="col-md-4 control-label">Arrive Depository Number</label>
+                    <label for="Place" class="col-md-4 control-label">Start Depository Number</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the arrive dno" name="Dno_arrive">
+                        <input type="text" class="form-control" placeholder="Please input the start depository number" name="Dstartno">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="Place" class="col-md-4 control-label">Is Destination</label>
+                    <label for="Place" class="col-md-4 control-label">Destination Depository Number</label>
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input if is destination" name="isdesitination">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="Place" class="col-md-4 control-label">Route Information</label>
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Please input the route information" name="Rinfo">
+                        <input type="text" class="form-control" placeholder="Please input the destination depository number" name="Ddestinyno">
                     </div>
                 </div>
                 <div class="form-group">
