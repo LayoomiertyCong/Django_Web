@@ -72,6 +72,7 @@ urlpatterns = [
     url(r'^lc_query_transfer_information/(.+)/$',app.logisticcenter.lc_query_transfer_information,name='lc_query_transfer_information'),
     url(r'^lc_query_depository_leftcapacity/(.+)/$',app.logisticcenter.lc_query_depository_leftcapacity,name='lc_query_depository_leftcapacity'),
     url(r'^lc_query_deliverman_information/(.+)/$',app.logisticcenter.lc_query_deliverman_information,name='lc_query_deliverman_information'),
+    url(r'^lc_query_distribution_information/(.+)/$',app.logisticcenter.lc_query_distribution_information,name='lc_query_distribution_information')
     url(r'^lc_update_supplier/(.+)/$',app.logisticcenter.lc_update_supplier,name='lc_update_supplier'),
     url(r'^lc_update_customer/(.+)/$',app.logisticcenter.lc_update_customer,name='lc_update_customer'),
     url(r'^lc_update_depository/(.+)/$',app.logisticcenter.lc_update_depository,name='lc_update_depository'),
